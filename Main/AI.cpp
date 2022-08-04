@@ -4,7 +4,12 @@
 
 void AI::init(int aiPlayer) {
     _aiPlayer = aiPlayer;
-	_humanPlayer = _aiPlayer == X_VAL ? O_VAL : X_VAL;
+	// _humanPlayer = _aiPlayer == X_VAL ? O_VAL : X_VAL;
+	if (_aiPlayer == X_VAL) {
+		_humanPlayer = O_VAL;
+	} else {
+		_humanPlayer = X_VAL;
+	}
 }
 
 void AI::performMove(Board& board) {
@@ -88,6 +93,5 @@ AiMove AI::getBestMove(Board& board, int player, int depth /* = 0*/)
 		}
 	}
 
-	// return it
 	return moves[bestMove];
 }
