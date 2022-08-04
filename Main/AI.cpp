@@ -48,7 +48,11 @@ AiMove AI::getBestMove(Board& board, int player, int depth /* = 0*/)
 				board.setVal(x, y, player);
 
 				// check if a good move
-				move.score = getBestMove(board, player == _aiPlayer ? _humanPlayer : _aiPlayer, depth).score;
+				if (player == _aiPlayer) {
+					move.score = getBestMove(board, _humanPlayer).score;
+				} else {
+					move.score = getBestMove(board, _aiPlayer).score;
+				}
 
 				moves.push_back(move);
 
